@@ -24,10 +24,10 @@ window.onload = function() {
 // Particles.js with cursor interactivity
 particlesJS('particles-js', {
   particles: {
-    number: { value: 30, density: { enable: true, value_area: 800 } },
+    number: { value: 10, density: { enable: true, value_area: 800 } },
     color: { value: '#ffffff' },
     shape: { type: 'circle' },
-    opacity: { value: 0.8, random: true },
+    opacity: { value: 0.5, random: true },
     size: { value: 4, random: true },
     line_linked: { enable: true },
     move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' }
@@ -50,7 +50,7 @@ particlesJS('particles-js', {
 
 // Counter-Up Animation
 const counters = document.querySelectorAll('.counter');
-const speed = 200;
+const speed = 500;
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -72,8 +72,15 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 counters.forEach(counter => observer.observe(counter));
 
-// Smooth Scrolling and Active Link Highlighting
+// Smooth Scrolling, Active Link Highlighting, and Dynamic Hero Text
 document.addEventListener('DOMContentLoaded', () => {
+  // Dynamic hero text for mobile
+  const typedText = document.querySelector('.typed-text');
+  if (window.innerWidth <= 768) {
+    typedText.textContent = 'Sustainable Impact';
+    typedText.style.animation = 'typing 2s steps(18, end), blink 0.75s step-end infinite';
+  }
+
   const links = document.querySelectorAll('.nav-link');
   links.forEach(link => {
     link.addEventListener('click', (e) => {

@@ -11,158 +11,311 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    #home {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-    #home .hero-media {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-      transform: scale(1.1);
-    }
-    #home .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 2;
-      pointer-events: none; /* Allow mouse events to pass through */
-    }
+  body { font-family: 'Inter', sans-serif; }
+  #home {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  #home .hero-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Clip any overflow from the scaled iframe */
+    z-index: 1;
+  }
+  #home .hero-media iframe {
+    width: 110%; /* Scale slightly larger to cover the area */
+    height: 110%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the iframe */
+    border: none;
+    object-fit: cover; /* Ensure video fills container */
+  }
+  #home .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Faded dark black */
+    z-index: 2;
+    pointer-events: none;
+  }
+  #home .hero-content {
+    position: relative;
+    z-index: 4;
+    pointer-events: auto;
+    width: 100%; /* Ensure content takes full width */
+  }
+  #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: auto;
+  }
+  /* Loader Styles */
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    animation: fadeOut 3s forwards;
+  }
+  .loader::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 4px solid #10b981;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+  }
+  .typed-text {
+    display: inline-block;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(34, end), blink 0.75s step-end infinite;
+    line-height: 1.2;
+    max-width: 100%; /* Prevent overflow */
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  /* News Section Styles */
+  .news-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  .news-date {
+    color: #10b981;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .news-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+  }
+  .news-description {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .news-link {
+    color: #10b981;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .news-link:hover {
+    color: #059669;
+    text-decoration: underline;
+  }
+  /* Navbar Styles */
+  #navbar {
+    background: rgba(255, 255, 255, 0.9);
+    transition: background 0.3s ease;
+  }
+  .header-scrolled {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .nav-link {
+    position: relative;
+    padding: 8px 12px;
+    transition: color 0.2s ease, background 0.3s ease;
+  }
+  .nav-link:hover {
+    color: #10b981 !important;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 4px;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 4px;
+    left: 12px;
+    background: #10b981;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: calc(100% - 24px);
+  }
+  .nav-link.active {
+    color: #10b981 !important;
+    font-weight: 700;
+  }
+  .nav-link:focus {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  #mobile-menu {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  #mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  /* Project Card Styles */
+  .project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  /* Investment Section Styles */
+  #investments .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  #investments .stat-item {
+    text-align: center;
+  }
+  #investments .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #10b981;
+  }
+  #investments .stat-label {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    .nav-link { padding: 10px 16px; }
+    .container { padding-left: 1rem; padding-right: 1rem; }
+    #particles-js { display: none; }
     #home .hero-content {
-      position: relative;
-      z-index: 4; /* Higher than particles-js */
-      pointer-events: auto; /* Ensure buttons are clickable */
-    }
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 3;
-      pointer-events: auto; /* Ensure canvas captures mouse events */
+      padding: 1rem;
+      text-align: center; /* Center text for better mobile alignment */
     }
     .typed-text {
-      display: inline-block;
-      border-right: 2px solid white;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 3s steps(34, end), blink 0.75s step-end infinite;
-      line-height: 1.2;
-      width: fit-content; 
+      font-size: 2rem; /* Further reduce font size */
+      white-space: normal; /* Allow wrapping if needed */
+      line-height: 1.3;
+      max-width: 90%; /* Limit width to prevent overflow */
+      margin: 0 auto; /* Center the text */
     }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+    #home h1 {
+      font-size: 2rem; /* Match .typed-text for consistency */
     }
-    @keyframes blink {
-      50% { border-color: transparent; }
+    #home p {
+      font-size: 1.25rem; /* Adjust subtitle size */
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      height: 100%;
-      width: 2px;
-      background: #e5e7eb;
-      transform: translateX(-50%);
+    #home .flex {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center;
+      justify-content: center; /* Center vertically */
+      gap: 1rem;
     }
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 20px;
+    #home .flex a {
+      width: 280px; /* Fixed width for uniformity */
+      min-width: 280px; /* Prevent shrinking */
+      padding: 0.75rem 1rem; /* Consistent padding */
+      margin: 0 auto; /* Center horizontally */
+      box-sizing: border-box; /* Include borders in width */
+      text-align: center;
+      font-size: 1rem; /* Consistent font size */
     }
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      text-align: right;
+    #home .hero-media iframe {
+      width: 300%; /* Significantly increased zoom for mobile */
+      height: 300%;
+      object-fit: cover; /* Prevent distortion */
     }
-    .timeline-item:nth-child(even) {
-      left: 50%;
-      text-align: left;
+    #investments .stats-grid {
+      grid-template-columns: 1fr;
     }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      top: 30px;
-      width: 16px;
-      height: 16px;
-      background: #10b981;
-      border-radius: 50%;
-      z-index: 1;
+    .news-card {
+      padding: 1.25rem;
     }
-    .timeline-item:nth-child(odd)::before {
-      right: -8px;
+    .news-title {
+      font-size: 1.25rem;
     }
-    .timeline-item:nth-child(even)::before {
-      left: -8px;
+    .news-description {
+      font-size: 0.95rem;
     }
-    /* Navbar Styles */
-    #navbar {
-      background: rgba(255, 255, 255, 0.9);
-      transition: background 0.3s ease;
+    .news-date {
+      font-size: 0.85rem;
     }
-    .header-scrolled {
-      background: rgba(255, 255, 255, 1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  @media (max-width: 640px) {
+    .typed-text {
+      font-size: 1.75rem; /* Even smaller for very small screens */
+      line-height: 1.4;
     }
-    .nav-link {
-      position: relative;
-      padding: 8px 12px;
-      transition: color 0.2s ease, background 0.3s ease;
+    #home h1 {
+      font-size: 1.75rem;
     }
-    .nav-link:hover {
-      color: #10b981 !important;
-      background: rgba(16, 185, 129, 0.1);
-      border-radius: 4px;
+    #home p {
+      font-size: 1rem;
     }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 4px;
-      left: 12px;
-      background: #10b981;
-      transition: width 0.3s ease;
+    #home .hero-content {
+      padding: 0.75rem;
     }
-    .nav-link:hover::after {
-      width: calc(100% - 24px);
+    .news-card {
+      padding: 1rem;
     }
-    .nav-link.active {
-      color: #10b981 !important;
-      font-weight: 700;
+    .news-title {
+      font-size: 1.125rem;
     }
-    .nav-link:focus {
-      outline: 2px solid #10b981;
-      outline-offset: 2px;
-      border-radius: 4px;
+    .news-description {
+      font-size: 0.9rem;
     }
-    #mobile-menu {
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform: translateY(-10px);
-      opacity: 0;
+    #home .flex a {
+      width: 100%; /* Full width on very small screens */
+      min-width: 240px; /* Slightly smaller for narrow screens */
+      padding: 0.75rem 1rem;
     }
-    #mobile-menu.open {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    @media (max-width: 768px) {
-      .nav-link { padding: 10px 16px; }
-      .container { padding-left: 1rem; padding-right: 1rem; }
-      #particles-js { display: none; } /* Disable particles on mobile for performance */
-      .typed-text { font-size: 2.5rem; } /* Adjust hero text size */
-    }
-  </style>
+  }
+</style>
 </head>
 <body class="bg-white text-gray-900">
   <!-- Navigation Bar -->
@@ -176,8 +329,9 @@
       <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
         <a href="#home" class="nav-link text-gray-800 font-medium transition-colors duration-200">Home</a>
         <a href="#about" class="nav-link text-gray-800 font-medium transition-colors duration-200">About</a>
-        <a href="#projects" class="nav-link text-gray-800 font-medium transition-colors duration-200">Projects</a>
+        <a href="#investments" class="nav-link text-gray-800 font-medium transition-colors duration-200">Investments</a>
         <a href="#impact" class="nav-link text-gray-800 font-medium transition-colors duration-200">Impact</a>
+        <a href="#projects" class="nav-link text-gray-800 font-medium transition-colors duration-200">Projects</a>
         <a href="#news" class="nav-link text-gray-800 font-medium transition-colors duration-200">News</a>
         <a href="#careers" class="nav-link text-gray-800 font-medium transition-colors duration-200">Careers</a>
         <a href="#contact" class="nav-link text-gray-800 font-medium transition-colors duration-200">Contact</a>
@@ -196,8 +350,9 @@
       <nav class="flex flex-col p-4 space-y-4" role="navigation" aria-label="Mobile navigation">
         <a href="#home" class="nav-link text-gray-800 font-medium" tabindex="0">Home</a>
         <a href="#about" class="nav-link text-gray-800 font-medium" tabindex="0">About</a>
-        <a href="#projects" class="nav-link text-gray-800 font-medium" tabindex="0">Projects</a>
+        <a href="#investments" class="nav-link text-gray-800 font-medium" tabindex="0">Investments</a>
         <a href="#impact" class="nav-link text-gray-800 font-medium" tabindex="0">Impact</a>
+        <a href="#projects" class="nav-link text-gray-800 font-medium" tabindex="0">Projects</a>
         <a href="#news" class="nav-link text-gray-800 font-medium" tabindex="0">News</a>
         <a href="#careers" class="nav-link text-gray-800 font-medium" tabindex="0">Careers</a>
         <a href="#contact" class="nav-link text-gray-800 font-medium" tabindex="0">Contact</a>
@@ -207,7 +362,16 @@
 
   <!-- Hero Section -->
   <section id="home">
-    <img class="hero-media" src="images/renewable-energy-landscape.jpg" alt="Solar Energy Landscape">
+    <div class="hero-media">
+      <iframe 
+        src="https://player.vimeo.com/video/1006636061?autoplay=1&controls=1&autopause=0&title=0&byline=0&portrait=0&sidedock=0&mute=1&background=1&showinfo=0" 
+        frameborder="0" 
+        allow="autoplay; fullscreen" 
+        allowfullscreen 
+        aria-hidden="true"
+      ></iframe>
+    </div>
+    <div class="loader"></div>
     <div id="particles-js"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content container mx-auto px-6 text-left text-white">
@@ -215,9 +379,9 @@
         <span class="typed-text">Pioneering the Solar Energy Revolution</span>
       </h1>
       <p class="text-xl md:text-2xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="500">Solvaris drives sustainable energy innovation with solar and battery storage projects across Europe.</p>
-      <div class="flex space-x-4" data-aos="fade-up" data-aos-delay="700">
-        <a href="#projects" class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200">Explore Projects</a>
-        <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-green-800 transition-colors duration-200">Get in Touch</a>
+      <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 items-center" data-aos="fade-up" data-aos-delay="700">
+        <a href="#projects" class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 w-full sm:w-auto text-center">Explore Projects</a>
+        <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-green-800 transition-colors duration-200 w-full sm:w-auto text-center">Get in Touch</a>
       </div>
     </div>
   </section>
@@ -228,9 +392,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div data-aos="fade-right">
           <h2 class="text-4xl font-bold mb-6">About Solvaris</h2>
-          <p class="text-gray-600 leading-relaxed mb-4">Headquartered in Amsterdam, Netherlands, Solvaris is a renewable energy company specializing in the development of solar farms and battery storage systems across Europe.
-            We are committed to powering a greener future through cutting-edge solar and storage technologies.</p>
-          <p class="text-gray-600 leading-relaxed">With a growing pipeline of over 1 GW of renewable energy projects across the continent, Solvaris is actively shaping the transition to clean, sustainable energy.</p>
+          <p class="text-gray-600 leading-relaxed mb-4">Headquartered in Amsterdam, Netherlands, Solvaris is a renewable energy company specializing in the development, construction, and acquisition of Ready-to-Build (RTB) solar farms and Battery Energy Storage Systems (BESS) across Europe. We strategically acquire RTB BESS projects to enhance grid stability and support the energy transition.</p>
+          <p class="text-gray-600 leading-relaxed">With a growing pipeline of over 1 GW of renewable energy projects across the continent, Solvaris is actively shaping the transition to clean, sustainable energy. Our operations focus on key markets including the Netherlands, Germany, and Eastern Europe, where we drive impactful renewable energy solutions.</p>
         </div>
         <div data-aos="fade-left" data-aos-delay="200">
           <img src="images/solvaris-team.jpg" alt="Solvaris Team" class="w-full rounded-lg shadow-lg">
@@ -239,62 +402,36 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-<section id="projects" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Our Projects</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-
-    <!-- RhodoSolar 18 -->
-    <div class="bg-white shadow-xl rounded-lg p-8 hover:shadow-2xl transition-shadow duration-300 lax" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-aos="fade-up">
-      <img src="images/rhodosolar.jpg" alt="RhodoSolar 18" class="w-full h-48 object-cover rounded-t-lg mb-4">
-      <h3 class="text-2xl font-semibold mb-3">RhodoSolar 18 – Bulgaria</h3>
-      <p class="text-gray-600 mb-4">18.2 MWp PV project in the Rhodope Mountains. Grid pre-application and land secured in Q2 2025.</p>
-      <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
+  <!-- Investments Section -->
+  <section id="investments" class="bg-gray-50 py-20 px-6">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-6" data-aos="fade-up">Creating Sustainable Value</h2>
+      <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">We acquire, build, and optimize grid-scale solar and battery storage projects across Europe, backed by leading infrastructure investors.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <p class="text-gray-600 leading-relaxed mb-4">Solvaris is a global leader in energy infrastructure investments, specializing in the acquisition of Ready-to-Build (RTB) projects, construction, and operational optimization of large-scale solar and battery storage systems. Our buy-and-build strategy creates a diversified portfolio of European infrastructure assets, designed to deliver long-term sustainable growth.</p>
+          <p class="text-gray-600 leading-relaxed mb-4">Partnering with leading funds and debt providers, we proactively manage our investments to ensure resilience and adaptability, driving positive outcomes for our clients and society.</p>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <p class="stat-value">$500 M</p>
+              <p class="stat-label">Capital Deployed</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-value">6</p>
+              <p class="stat-label">Countries</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-value">10+</p>
+              <p class="stat-label">Transactions</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="200">
+          <img src="images/renewable-energy-landscape.jpg" alt="Renewable Energy Landscape" class="w-full rounded-lg shadow-lg">
+        </div>
+      </div>
     </div>
-
-    <!-- Danube Sunline -->
-    <div class="bg-white shadow-xl rounded-lg p-8 hover:shadow-2xl transition-shadow duration-300 lax" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-aos="fade-up" data-aos-delay="100">
-      <img src="images/danube-sunline.jpg" alt="Danube Sunline" class="w-full h-48 object-cover rounded-t-lg mb-4">
-      <h3 class="text-2xl font-semibold mb-3">Danube Sunline – Romania</h3>
-      <p class="text-gray-600 mb-4">16.7 MWp project in Giurgiu County, developed for co-location with future BESS. In environmental screening.</p>
-      <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-    </div>
-
-    <!-- Helios Valley -->
-    <div class="bg-white shadow-xl rounded-lg p-8 hover:shadow-2xl transition-shadow duration-300 lax" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-aos="fade-up" data-aos-delay="200">
-      <img src="images/helios-valley.jpg" alt="Helios Valley" class="w-full h-48 object-cover rounded-t-lg mb-4">
-      <h3 class="text-2xl font-semibold mb-3">Helios Valley – Greece</h3>
-      <p class="text-gray-600 mb-4">19.3 MWp bifacial solar plant in Thessaly. Permitting partner appointed, land secured.</p>
-      <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-    </div>
-
-    <!-- DeltaFlex One -->
-    <div class="bg-white shadow-xl rounded-lg p-8 hover:shadow-2xl transition-shadow duration-300 lax" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-aos="fade-up">
-      <img src="images/deltaflex.jpg" alt="DeltaFlex One" class="w-full h-48 object-cover rounded-t-lg mb-4">
-      <h3 class="text-2xl font-semibold mb-3">DeltaFlex One – Zeeland, NL</h3>
-      <p class="text-gray-600 mb-4">75 MWh lithium-ion BESS to relieve grid congestion in the southwest Netherlands. Grid capacity reserved.</p>
-      <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-    </div>
-
-    <!-- RheinCore 500 -->
-    <div class="bg-white shadow-xl rounded-lg p-8 hover:shadow-2xl transition-shadow duration-300 lax" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-aos="fade-up" data-aos-delay="100">
-      <img src="images/rheincore.jpg" alt="RheinCore 500" class="w-full h-48 object-cover rounded-t-lg mb-4">
-      <h3 class="text-2xl font-semibold mb-3">RheinCore 500 – Germany</h3>
-      <p class="text-gray-600 mb-4">Flagship 500 MWh BESS project in NRW supporting peak shaving and balancing for industrial demand.</p>
-      <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-    </div>
-
-    <!-- SofiaGrid Reserve -->
-    <div class="bg-white shadow-xl rounded-lg p-8 hover:shadow-2xl transition-shadow duration-300 lax" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-aos="fade-up" data-aos-delay="200">
-      <img src="images/sofiagrid.jpg" alt="SofiaGrid Reserve" class="w-full h-48 object-cover rounded-t-lg mb-4">
-      <h3 class="text-2xl font-semibold mb-3">SofiaGrid Reserve – Bulgaria</h3>
-      <p class="text-gray-600 mb-4">120 MWh battery reserve in early-stage land scouting near Sofia. Key to Bulgaria’s renewable integration strategy.</p>
-      <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 
   <!-- Impact Section -->
   <section id="impact" class="bg-green-800 text-white py-20 px-6">
@@ -314,69 +451,98 @@
           <p class="text-lg mt-2">Project Pipeline (MW)</p>
         </div>
         <div class="lax" data-aos="fade-up" data-aos-delay="600" data-lax-opacity="0 0, 400 1" data-lax-translate-y="0 50, 400 0">
-          <p class="text-5xl font-bold text-green-300 counter" data-target="95">0</p>
-          <p class="text-lg mt-2">Renewable Energy Usage (%)</p>
+          <p class="text-5xl font-bold text-green-300 counter" data-target="500">0</p>
+          <p class="text-lg mt-2">Capital Deployed (Million USD)</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- News Section (Timeline) -->
-<section id="news" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Latest News</h2>
-  <div class="relative timeline">
-
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="bg-white shadow-xl rounded-lg p-8">
-        <h3 class="text-2xl font-semibold mb-3">Pipeline Reaches 1.2 GW Milestone</h3>
-        <p class="text-gray-600 mb-4">June 2025: Solvaris proudly announces a development pipeline exceeding 1.2 GW of PV and BESS projects across the EU.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Read More</a>
+  <!-- Projects Section -->
+  <section id="projects" class="container mx-auto py-20 px-6">
+    <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Our Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Atlas Solar – Bulgaria -->
+      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up">
+        <img src="images/rhodosolar.jpg" alt="Atlas Solar – Bulgaria" class="w-full h-48 object-cover rounded-t-lg mb-4">
+        <h3 class="text-2xl font-semibold mb-3">Atlas Solar – Bulgaria</h3>
+        <p class="text-gray-600 mb-4">18.2 MWp PV project in the Rhodope Mountains. Grid pre-application and land secured in Q2 2025.</p>
+        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
+      </div>
+      <!-- Orion Fields – Romania -->
+      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="images/danube-sunline.jpg" alt="Orion Fields – Romania" class="w-full h-48 object-cover rounded-t-lg mb-4">
+        <h3 class="text-2xl font-semibold mb-3">Orion Fields – Romania</h3>
+        <p class="text-gray-600 mb-4">16.7 MWp project in Giurgiu County, developed for co-location with future BESS. In environmental screening.</p>
+        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
+      </div>
+      <!-- Aether Valley – Greece -->
+      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/helios-valley.jpg" alt="Aether Valley – Greece" class="w-full h-48 object-cover rounded-t-lg mb-4">
+        <h3 class="text-2xl font-semibold mb-3">Aether Valley – Greece</h3>
+        <p class="text-gray-600 mb-4">19.3 MWp bifacial solar plant in Thessaly. Permitting partner appointed, land secured.</p>
+        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
+      </div>
+      <!-- Taurus One – Netherlands -->
+      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up">
+        <img src="images/deltaflex.jpg" alt="Taurus One – Netherlands" class="w-full h-48 object-cover rounded-t-lg mb-4">
+        <h3 class="text-2xl font-semibold mb-3">Taurus One – Netherlands</h3>
+        <p class="text-gray-600 mb-4">75 MWh lithium-ion BESS to relieve grid congestion in the southwest Netherlands. Grid capacity reserved.</p>
+        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
+      </div>
+      <!-- Kronos Core – Germany -->
+      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="images/rheincore.jpg" alt="Kronos Core – Germany" class="w-full h-48 object-cover rounded-t-lg mb-4">
+        <h3 class="text-2xl font-semibold mb-3">Kronos Core – Germany</h3>
+        <p class="text-gray-600 mb-4">Flagship 500 MWh BESS project in NRW supporting peak shaving and balancing for industrial demand.</p>
+        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
+      </div>
+      <!-- Athena Reserve – Bulgaria -->
+      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/sofiagrid.jpg" alt="Athena Reserve – Bulgaria" class="w-full h-48 object-cover rounded-t-lg mb-4">
+        <h3 class="text-2xl font-semibold mb-3">Athena Reserve – Bulgaria</h3>
+        <p class="text-gray-600 mb-4">120 MWh battery reserve in early-stage land scouting near Sofia. Key to Bulgaria’s renewable integration strategy.</p>
+        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item" data-aos="fade-right">
-      <div class="bg-white shadow-xl rounded-lg p-8">
-        <h3 class="text-2xl font-semibold mb-3">Grid Connection Studies Initiated</h3>
-        <p class="text-gray-600 mb-4">May 2025: Solvaris kicks off grid studies in The Netherlands, Germany, and Bulgaria, preparing for future connection applications.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Read More</a>
+  <!-- News Section -->
+  <section id="news" class="container mx-auto py-20 px-6">
+    <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Latest News</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="news-card" data-aos="fade-up">
+        <p class="news-date">June 2025</p>
+        <h3 class="news-title">Pipeline Reaches 1.2 GW Milestone</h3>
+        <p class="news-description">Solvaris proudly announces a development pipeline exceeding 1.2 GW of PV and BESS projects across the EU, marking a significant step in our mission to advance renewable energy.</p>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+        <p class="news-date">May 2025</p>
+        <h3 class="news-title">Grid Connection Studies Initiated</h3>
+        <p class="news-description">Solvaris has launched grid connection studies in the Netherlands, Germany, and Bulgaria, preparing for seamless integration of future renewable energy projects.</p>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+        <p class="news-date">April 2025</p>
+        <h3 class="news-title">Strategic Partnerships Signed</h3>
+        <p class="news-description">Solvaris formalizes collaborations with leading engineering and permitting partners in Eastern Europe to accelerate project development and execution.</p>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="300">
+        <p class="news-date">March 2025</p>
+        <h3 class="news-title">Solvaris Joins Key Industry Associations</h3>
+        <p class="news-description">By joining SolarPower Europe and EASE, Solvaris strengthens its position in the renewable energy ecosystem, fostering innovation and collaboration.</p>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="400">
+        <p class="news-date">February 2025</p>
+        <h3 class="news-title">Land Agreements Secured in Spain and Romania</h3>
+        <p class="news-description">Solvaris signs preliminary agreements for over 300 hectares of land, laying the foundation for its expanding renewable energy development pipeline.</p>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="500">
+        <p class="news-date">January 2025</p>
+        <h3 class="news-title">Solvaris Officially Incorporated</h3>
+        <p class="news-description">Founded in Amsterdam, Solvaris begins its journey with a mission to develop utility-scale solar and battery storage projects across Europe.</p>
       </div>
     </div>
-
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="bg-white shadow-xl rounded-lg p-8">
-        <h3 class="text-2xl font-semibold mb-3">Strategic Partnerships Signed</h3>
-        <p class="text-gray-600 mb-4">In April 2025, Solvaris formalizes collaborations with engineering and permitting partners Eastern Europe.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Read More</a>
-      </div>
-    </div>
-
-    <div class="timeline-item" data-aos="fade-right">
-      <div class="bg-white shadow-xl rounded-lg p-8">
-        <h3 class="text-2xl font-semibold mb-3">Solvaris Joins Key Industry Associations</h3>
-        <p class="text-gray-600 mb-4">March 2025: Solvaris becomes a member of SolarPower Europe and EASE to strengthen its position in the renewable energy ecosystem.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Read More</a>
-      </div>
-    </div>
-
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="bg-white shadow-xl rounded-lg p-8">
-        <h3 class="text-2xl font-semibold mb-3">Land Agreements Secured in Spain and Romania</h3>
-        <p class="text-gray-600 mb-4">February 2025: Solvaris signs preliminary agreements for 300+ hectares of land, marking the beginning of its development pipeline.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Read More</a>
-      </div>
-    </div>
-
-    <div class="timeline-item" data-aos="fade-right">
-      <div class="bg-white shadow-xl rounded-lg p-8">
-        <h3 class="text-2xl font-semibold mb-3">Solvaris Officially Incorporated</h3>
-        <p class="text-gray-600 mb-4">In January 2025, Solvaris was founded in Amsterdam with a mission to develop utility-scale solar and battery storage projects across Europe.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Read More</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 
   <!-- Careers Section -->
   <section id="careers" class="bg-gray-50 py-20 px-6">
@@ -441,6 +607,8 @@
         <ul class="space-y-2">
           <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-200">Home</a></li>
           <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-200">About</a></li>
+          <li><a href="#investments" class="text-gray-400 hover:text-white transition-colors duration-200">Investments</a></li>
+          <li><a href="#impact" class="text-gray-400 hover:text-white transition-colors duration-200">Impact</a></li>
           <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors duration-200">Projects</a></li>
           <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-200">Contact</a></li>
         </ul>
@@ -468,7 +636,6 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lax.js@2.0.0/index.min.js"></script>
   <script src="/js/main.js" defer></script>
