@@ -24,7 +24,7 @@ window.onload = function() {
 // Particles.js with cursor interactivity
 particlesJS('particles-js', {
   particles: {
-    number: { value: 10, density: { enable: true, value_area: 800 } },
+    number: { value: 0, density: { enable: true, value_area: 800 } },
     color: { value: '#ffffff' },
     shape: { type: 'circle' },
     opacity: { value: 0.5, random: true },
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Dynamic hero text for mobile
   const typedText = document.querySelector('.typed-text');
   if (window.innerWidth <= 768) {
-    typedText.textContent = 'Sustainable Impact';
-    typedText.style.animation = 'typing 2s steps(18, end), blink 0.75s step-end infinite';
+    typedText.textContent = 'Real Impact.';
+    typedText.style.animation = 'typing 1s steps(12, end), blink 0.75s step-end infinite';
   }
 
   const links = document.querySelectorAll('.nav-link');
