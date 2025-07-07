@@ -19,6 +19,11 @@ app.get('/careers', (req, res) => {
   res.render('careers');
 });
 
+// Route to render investment-strategy.ejs
+app.get('/investment-strategy', (req, res) => {
+  res.render('investment-strategy');
+});
+
 // Export the app for Vercel
 module.exports = app;
 
