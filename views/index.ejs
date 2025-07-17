@@ -4,15 +4,15 @@
   <link rel="icon" href="/favicon.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Solvaris - Leading the way in solar and battery storage solutions across Europe.">
-  <meta name="keywords" content="solar energy, renewable energy, battery storage, sustainability, Solvaris">
+  <meta name="description" content="Solvaris - Pioneering renewable energy and microgrid solutions for a sustainable future.">
+  <meta name="keywords" content="renewable energy, microgrids, solar energy, battery storage, sustainability, Solvaris">
   <meta name="author" content="Solvaris">
-  <title>Solvaris - Pioneering the Solar Energy Revolution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Solvaris - Pioneering Renewable Energy Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-  body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; }
   #home {
     position: relative;
     height: 100vh;
@@ -110,44 +110,16 @@
   @keyframes blink {
     50% { border-color: transparent; }
   }
-  /* News Section Styles */
-  .news-card {
+  .card {
     background: #ffffff;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
+    padding: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .news-card:hover {
+  .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  .news-date {
-    color: #10b981;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-  .news-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 0.75rem;
-  }
-  .news-description {
-    color: #4b5563;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  .news-link {
-    color: #10b981;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-  .news-link:hover {
-    color: #059669;
-    text-decoration: underline;
   }
   /* Navbar Styles */
   #navbar {
@@ -199,97 +171,56 @@
     transform: translateY(0);
     opacity: 1;
   }
-  /* Project Card Styles */
-  .project-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .project-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  }
-  /* Investment Section Styles */
-  #investments .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  #investments .stat-item {
-    text-align: center;
-  }
-  #investments .stat-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #10b981;
-  }
-  #investments .stat-label {
-    font-size: 1rem;
-    color: #4b5563;
-    margin-top: 0.5rem;
-  }
   @media (max-width: 768px) {
     .nav-link { padding: 10px 16px; }
     .container { padding-left: 1rem; padding-right: 1rem; }
-    #particles-js { display: none; }
     #home .hero-content {
       padding: 1rem;
-      text-align: center; /* Center text for better mobile alignment */
+      text-align: center;
     }
     .typed-text {
-      font-size: 2rem; /* Further reduce font size */
-      white-space: normal; /* Allow wrapping if needed */
+      font-size: 2rem;
+      white-space: normal;
       line-height: 1.3;
-      max-width: 90%; /* Limit width to prevent overflow */
-      margin: 0 auto; /* Center the text */
+      max-width: 90%;
+      margin: 0 auto;
     }
     #home h1 {
-      font-size: 2rem; /* Match .typed-text for consistency */
+      font-size: 2rem;
     }
     #home p {
-      font-size: 1.25rem; /* Adjust subtitle size */
+      font-size: 1.25rem;
       max-width: 90%;
       margin-left: auto;
       margin-right: auto;
     }
     #home .flex {
-      flex-direction: column; /* Stack buttons vertically */
+      flex-direction: column;
       align-items: center;
-      justify-content: center; /* Center vertically */
+      justify-content: center;
       gap: 1rem;
     }
     #home .flex a {
-      width: 280px; /* Fixed width for uniformity */
-      min-width: 280px; /* Prevent shrinking */
-      padding: 0.75rem 1rem; /* Consistent padding */
-      margin: 0 auto; /* Center horizontally */
-      box-sizing: border-box; /* Include borders in width */
+      width: 280px;
+      min-width: 280px;
+      padding: 0.75rem 1rem;
+      margin: 0 auto;
+      box-sizing: border-box;
       text-align: center;
-      font-size: 1rem; /* Consistent font size */
+      font-size: 1rem;
     }
-    #home .hero-media iframe {
-      width: 320%; /* Significantly increased zoom for mobile */
-      height: 320%;
-      object-fit: cover; /* Prevent distortion */
+    #home .hero-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    #investments .stats-grid {
-      grid-template-columns: 1fr;
-    }
-    .news-card {
+    .card {
       padding: 1.25rem;
-    }
-    .news-title {
-      font-size: 1.25rem;
-    }
-    .news-description {
-      font-size: 0.95rem;
-    }
-    .news-date {
-      font-size: 0.85rem;
     }
   }
   @media (max-width: 640px) {
     .typed-text {
-      font-size: 1.75rem; /* Even smaller for very small screens */
+      font-size: 1.75rem;
       line-height: 1.4;
     }
     #home h1 {
@@ -301,25 +232,15 @@
     #home .hero-content {
       padding: 0.75rem;
     }
-    .news-card {
-      padding: 1rem;
-    }
-    .news-title {
-      font-size: 1.125rem;
-    }
-    .news-description {
-      font-size: 0.9rem;
-    }
     #home .flex a {
-      width: 100%; /* Full width on very small screens */
-      min-width: 240px; /* Slightly smaller for narrow screens */
+      width: 100%;
+      min-width: 240px;
       padding: 0.75rem 1rem;
     }
   }
 </style>
 </head>
 <body class="bg-white text-gray-900">
-  <!-- Navigation Bar -->
   <header id="navbar" class="fixed w-full z-20 transition-all duration-300" role="banner">
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
       <div class="flex items-center">
@@ -330,9 +251,8 @@
       <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
         <a href="#home" class="nav-link text-gray-800 font-medium transition-colors duration-200">Home</a>
         <a href="#about" class="nav-link text-gray-800 font-medium transition-colors duration-200">About</a>
-        <a href="#investments" class="nav-link text-gray-800 font-medium transition-colors duration-200">Investments</a>
-        <a href="#impact" class="nav-link text-gray-800 font-medium transition-colors duration-200">Impact</a>
-        <a href="#projects" class="nav-link text-gray-800 font-medium transition-colors duration-200">Projects</a>
+        <a href="#vision" class="nav-link text-gray-800 font-medium transition-colors duration-200">Our Vision</a>
+        <a href="#commitment" class="nav-link text-gray-800 font-medium transition-colors duration-200">Commitment</a>
         <a href="#news" class="nav-link text-gray-800 font-medium transition-colors duration-200">News</a>
         <a href="#careers" class="nav-link text-gray-800 font-medium transition-colors duration-200">Careers</a>
         <a href="#contact" class="nav-link text-gray-800 font-medium transition-colors duration-200">Contact</a>
@@ -346,21 +266,19 @@
         </svg>
       </button>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
       <nav class="flex flex-col p-4 space-y-4" role="navigation" aria-label="Mobile navigation">
         <a href="#home" class="nav-link text-gray-800 font-medium" tabindex="0">Home</a>
         <a href="#about" class="nav-link text-gray-800 font-medium" tabindex="0">About</a>
-        <a href="#investments" class="nav-link text-gray-800 font-medium" tabindex="0">Investments</a>
-        <a href="#impact" class="nav-link text-gray-800 font-medium" tabindex="0">Impact</a>
-        <a href="#projects" class="nav-link text-gray-800 font-medium" tabindex="0">Projects</a>
+        <a href="#vision" class="nav-link text-gray-800 font-medium" tabindex="0">Our Vision</a>
+        <a href="#commitment" class="nav-link text-gray-800 font-medium" tabindex="0">Commitment</a>
         <a href="#news" class="nav-link text-gray-800 font-medium" tabindex="0">News</a>
         <a href="#careers" class="nav-link text-gray-800 font-medium" tabindex="0">Careers</a>
         <a href="#contact" class="nav-link text-gray-800 font-medium" tabindex="0">Contact</a>
       </nav>
     </div>
   </header>
-       
+
   <section id="home">
   <div class="hero-media">
     <iframe 
@@ -369,30 +287,28 @@
         allow="autoplay; fullscreen; picture-in-picture" 
         allowfullscreen
     ></iframe>
-  </div>
-  <div class="loader"></div>
-  <div id="particles-js"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content container mx-auto px-6 text-left text-white">
-    <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">
-      <span class="typed-text">Clean Power. Smart Storage. Real Impact</span>
-    </h1>
-    <p class="text-xl md:text-2xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="500">Solvaris builds solar and battery assets that move Europe toward a net-zero future.</p>
-    <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 items-center" data-aos="fade-up" data-aos-delay="700">
-      <a href="#projects" class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 w-full sm:w-auto text-center">Explore Projects</a>
-      <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-green-800 transition-colors duration-200 w-full sm:w-auto text-center">Get in Touch</a>
     </div>
-  </div>
-</section>
+    <div class="loader"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container mx-auto px-6 text-left text-white">
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">
+        <span class="typed-text">Empowering a Sustainable Future</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="300">Solvaris is dedicated to pioneering renewable energy and microgrid solutions for global sustainability.</p>
+      <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 items-center" data-aos="fade-up" data-aos-delay="500">
+        <a href="#vision" class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 w-full sm:w-auto text-center">Discover Our Vision</a>
+        <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-green-800 transition-colors duration-200 w-full sm:w-auto text-center">Get in Touch</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- About Section -->
   <section id="about" class="bg-gray-50 py-20 px-6">
     <div class="container mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div data-aos="fade-right">
           <h2 class="text-4xl font-bold mb-6">About Solvaris</h2>
-          <p class="text-gray-600 leading-relaxed mb-4">This is a demonstration website, all sections on this website are fictional. Headquartered in Amsterdam, Netherlands, Solvaris is a renewable energy company specializing in the development, construction, and acquisition of Ready-to-Build (RTB) solar farms and Battery Energy Storage Systems (BESS) across Europe. We strategically acquire RTB BESS projects to enhance grid stability and support the energy transition.</p>
-          <p class="text-gray-600 leading-relaxed">With a growing pipeline of over 1 GW of renewable energy projects across the continent, Solvaris is actively shaping the transition to clean, sustainable energy. Our operations focus on key markets including the Netherlands, Germany, and Eastern Europe, where we drive impactful renewable energy solutions.</p>
+          <p class="text-gray-600 leading-relaxed mb-4">Headquartered in Amsterdam, Netherlands, Solvaris is a forward-thinking renewable energy company poised to lead the development of solar farms, Battery Energy Storage Systems (BESS), and microgrid solutions. Our team of experienced professionals is committed to advancing clean energy technologies to support a sustainable future.</p>
+          <p class="text-gray-600 leading-relaxed">With a vision to empower communities through innovative energy solutions, Solvaris is preparing to deliver scalable and resilient renewable energy systems. We are actively building expertise and partnerships to drive the global energy transition.</p>
         </div>
         <div data-aos="fade-left" data-aos-delay="200">
           <img src="images/solvaris-team.jpg" alt="Solvaris Team" class="w-full rounded-lg shadow-lg">
@@ -401,162 +317,96 @@
     </div>
   </section>
 
-  <!-- Investments Section -->
-  <section id="investments" class="bg-gray-50 py-20 px-6">
+  <section id="vision" class="bg-white py-20 px-6">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-6" data-aos="fade-up">Creating Sustainable Value</h2>
-      <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">We acquire, build, and optimize grid-scale solar and battery storage projects across Europe, backed by leading infrastructure investors.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div data-aos="fade-right">
-          <p class="text-gray-600 leading-relaxed mb-4">Solvaris is a global leader in energy infrastructure investments, specializing in the acquisition of Ready-to-Build (RTB) projects, construction, and operational optimization of large-scale solar and battery storage systems. Our buy-and-build strategy creates a diversified portfolio of European infrastructure assets, designed to deliver long-term sustainable growth.</p>
-          <p class="text-gray-600 leading-relaxed mb-4">Partnering with leading funds and debt providers, we proactively manage our investments to ensure resilience and adaptability, driving positive outcomes for our clients and society.</p>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <p class="stat-value">$500 M</p>
-              <p class="stat-label">Capital Deployed</p>
-            </div>
-            <div class="stat-item">
-              <p class="stat-value">6</p>
-              <p class="stat-label">Countries</p>
-            </div>
-            <div class="stat-item">
-              <p class="stat-value">10+</p>
-              <p class="stat-label">Transactions</p>
-            </div>
-          </div>
+      <h2 class="text-4xl font-bold text-center mb-6" data-aos="fade-up">Our Vision</h2>
+      <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">We aim to transform energy access through cutting-edge solar, battery storage, and microgrid technologies.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold mb-3">Solar Energy</h3>
+          <p class="text-gray-600 mb-4">Harnessing the power of the sun to provide clean, renewable energy for communities and industries worldwide.</p>
         </div>
-        <div data-aos="fade-left" data-aos-delay="200">
-          <img src="images/renewable-energy-landscape.jpg" alt="Renewable Energy Landscape" class="w-full rounded-lg shadow-lg">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-2xl font-semibold mb-3">Battery Storage</h3>
+          <p class="text-gray-600 mb-4">Developing advanced Battery Energy Storage Systems (BESS) to enhance grid reliability and energy efficiency.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-2xl font-semibold mb-3">Microgrids</h3>
+          <p class="text-gray-600 mb-4">Designing decentralized microgrid solutions to deliver resilient and sustainable power to underserved regions.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Impact Section -->
-  <section id="impact" class="bg-green-800 text-white py-20 px-6">
+  <section id="commitment" class="bg-green-800 text-white py-20 px-6">
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Our Impact</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="lax" data-aos="fade-up" data-lax-opacity="0 0, 400 1" data-lax-translate-y="0 50, 400 0">
-          <p class="text-5xl font-bold text-green-300 counter" data-target="120">0</p>
-          <p class="text-lg mt-2">Installed Capacity (MW)</p>
+      <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Our Commitment</h2>
+      <p class="text-xl text-gray-100 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Solvaris is dedicated to creating a sustainable energy future by partnering with stakeholders to deliver innovative and accessible renewable energy solutions.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card bg-green-900" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold mb-3 text-white">Sustainability</h3>
+          <p class="text-gray-200 mb-4">Committed to reducing carbon footprints through clean energy innovation.</p>
         </div>
-        <div class="lax" data-aos="fade-up" data-aos-delay="200" data-lax-opacity="0 0, 400 1" data-lax-translate-y="0 50, 400 0">
-          <p class="text-5xl font-bold text-green-300 counter" data-target="250">0</p>
-          <p class="text-lg mt-2">Green Electricity Yearly (GWh)</p>
+        <div class="card bg-green-900" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-2xl font-semibold mb-3 text-white">Community Impact</h3>
+          <p class="text-gray-200 mb-4">Focused on empowering communities with reliable and affordable energy access.</p>
         </div>
-        <div class="lax" data-aos="fade-up" data-aos-delay="400" data-lax-opacity="0 0, 400 1" data-lax-translate-y="0 50, 400 0">
-          <p class="text-5xl font-bold text-green-300 counter" data-target="1200">0</p>
-          <p class="text-lg mt-2">Project Pipeline (MW)</p>
-        </div>
-        <div class="lax" data-aos="fade-up" data-aos-delay="600" data-lax-opacity="0 0, 400 1" data-lax-translate-y="0 50, 400 0">
-          <p class="text-5xl font-bold text-green-300 counter" data-target="500">0</p>
-          <p class="text-lg mt-2">Capital Deployed (Million USD)</p>
+        <div class="card bg-green-900" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-2xl font-semibold mb-3 text-white">Innovation</h3>
+          <p class="text-gray-200 mb-4">Leveraging cutting-edge technology to drive the global energy transition.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="container mx-auto py-20 px-6">
-    <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Our Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-      <!-- Atlas Solar – Bulgaria -->
-      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up">
-        <img src="images/rhodosolar.jpg" alt="Atlas Solar – Bulgaria" class="w-full h-48 object-cover rounded-t-lg mb-4">
-        <h3 class="text-2xl font-semibold mb-3">Atlas Solar – Bulgaria</h3>
-        <p class="text-gray-600 mb-4">18.2 MWp PV project in the Rhodope Mountains. Grid pre-application and land secured in Q2 2025.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-      </div>
-      <!-- Orion Fields – Romania -->
-      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="images/danube-sunline.jpg" alt="Orion Fields – Romania" class="w-full h-48 object-cover rounded-t-lg mb-4">
-        <h3 class="text-2xl font-semibold mb-3">Orion Fields – Romania</h3>
-        <p class="text-gray-600 mb-4">16.7 MWp project in Giurgiu County, developed for co-location with future BESS. In environmental screening.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-      </div>
-      <!-- Aether Valley – Greece -->
-      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="images/helios-valley.jpg" alt="Aether Valley – Greece" class="w-full h-48 object-cover rounded-t-lg mb-4">
-        <h3 class="text-2xl font-semibold mb-3">Aether Valley – Greece</h3>
-        <p class="text-gray-600 mb-4">19.3 MWp bifacial solar plant in Thessaly. Permitting partner appointed, land secured.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-      </div>
-      <!-- Taurus One – Netherlands -->
-      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up">
-        <img src="images/deltaflex.jpg" alt="Taurus One – Netherlands" class="w-full h-48 object-cover rounded-t-lg mb-4">
-        <h3 class="text-2xl font-semibold mb-3">Taurus One – Netherlands</h3>
-        <p class="text-gray-600 mb-4">75 MWh lithium-ion BESS to relieve grid congestion in the southwest Netherlands. Grid capacity reserved.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-      </div>
-      <!-- Kronos Core – Germany -->
-      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="images/rheincore.jpg" alt="Kronos Core – Germany" class="w-full h-48 object-cover rounded-t-lg mb-4">
-        <h3 class="text-2xl font-semibold mb-3">Kronos Core – Germany</h3>
-        <p class="text-gray-600 mb-4">Flagship 500 MWh BESS project in NRW supporting peak shaving and balancing for industrial demand.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-      </div>
-      <!-- Athena Reserve – Bulgaria -->
-      <div class="bg-white shadow-xl rounded-lg p-8 project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="images/sofiagrid.jpg" alt="Athena Reserve – Bulgaria" class="w-full h-48 object-cover rounded-t-lg mb-4">
-        <h3 class="text-2xl font-semibold mb-3">Athena Reserve – Bulgaria</h3>
-        <p class="text-gray-600 mb-4">120 MWh battery reserve in early-stage land scouting near Sofia. Key to Bulgaria’s renewable integration strategy.</p>
-        <a href="#contact" class="text-green-600 hover:underline">Learn More</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- News Section -->
   <section id="news" class="container mx-auto py-20 px-6">
     <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Latest News</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="news-card" data-aos="fade-up">
-        <p class="news-date">June 2025</p>
-        <h3 class="news-title">Pipeline Reaches 1.2 GW Milestone</h3>
-        <p class="news-description">Solvaris proudly announces a development pipeline exceeding 1.2 GW of PV and BESS projects across the EU, marking a significant step in our mission to advance renewable energy.</p>
+      <div class="card" data-aos="fade-up">
+        <p class="text-green-600 font-semibold text-sm mb-2">July 2025</p>
+        <h3 class="text-xl font-semibold mb-3">Solvaris Team Expansion</h3>
+        <p class="text-gray-600 mb-4">Solvaris welcomes leading renewable energy experts to our team, strengthening our capability to deliver innovative solutions.</p>
       </div>
-      <div class="news-card" data-aos="fade-up" data-aos-delay="100">
-        <p class="news-date">May 2025</p>
-        <h3 class="news-title">Grid Connection Studies Initiated</h3>
-        <p class="news-description">Solvaris has launched grid connection studies in the Netherlands, Germany, and Bulgaria, preparing for seamless integration of future renewable energy projects.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-green-600 font-semibold text-sm mb-2">June 2025</p>
+        <h3 class="text-xl font-semibold mb-3">Research and Development Initiative</h3>
+        <p class="text-gray-600 mb-4">Solvaris launches R&D efforts to explore advanced microgrid and storage technologies for future deployment.</p>
       </div>
-      <div class="news-card" data-aos="fade-up" data-aos-delay="200">
-        <p class="news-date">April 2025</p>
-        <h3 class="news-title">Strategic Partnerships Signed</h3>
-        <p class="news-description">Solvaris formalizes collaborations with leading engineering and permitting partners in Eastern Europe to accelerate project development and execution.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-green-600 font-semibold text-sm mb-2">May 2025</p>
+        <h3 class="text-xl font-semibold mb-3">Strategic Partnership Development</h3>
+        <p class="text-gray-600 mb-4">Solvaris begins forming alliances with global technology providers to support our upcoming renewable energy projects.</p>
       </div>
-      <div class="news-card" data-aos="fade-up" data-aos-delay="300">
-        <p class="news-date">March 2025</p>
-        <h3 class="news-title">Solvaris Joins Key Industry Associations</h3>
-        <p class="news-description">By joining SolarPower Europe and EASE, Solvaris strengthens its position in the renewable energy ecosystem, fostering innovation and collaboration.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <p class="text-green-600 font-semibold text-sm mb-2">April 2025</p>
+        <h3 class="text-xl font-semibold mb-3">Industry Engagement</h3>
+        <p class="text-gray-600 mb-4">Solvaris joins renewable energy associations to stay at the forefront of industry innovation and collaboration.</p>
       </div>
-      <div class="news-card" data-aos="fade-up" data-aos-delay="400">
-        <p class="news-date">February 2025</p>
-        <h3 class="news-title">Land Agreements Secured in Spain and Romania</h3>
-        <p class="news-description">Solvaris signs preliminary agreements for over 300 hectares of land, laying the foundation for its expanding renewable energy development pipeline.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <p class="text-green-600 font-semibold text-sm mb-2">March 2025</p>
+        <h3 class="text-xl font-semibold mb-3">Market Analysis Completed</h3>
+        <p class="text-gray-600 mb-4">Solvaris completes comprehensive market studies to identify key opportunities for renewable energy development.</p>
       </div>
-      <div class="news-card" data-aos="fade-up" data-aos-delay="500">
-        <p class="news-date">January 2025</p>
-        <h3 class="news-title">Solvaris Officially Incorporated</h3>
-        <p class="news-description">Founded in Amsterdam, Solvaris begins its journey with a mission to develop utility-scale solar and battery storage projects across Europe.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="500">
+        <p class="text-green-600 font-semibold text-sm mb-2">January 2025</p>
+        <h3 class="text-xl font-semibold mb-3">Solvaris Founded</h3>
+        <p class="text-gray-600 mb-4">Solvaris is established in Amsterdam with a mission to lead the renewable energy revolution.</p>
       </div>
     </div>
   </section>
 
-  <!-- Careers Section -->
   <section id="careers" class="bg-gray-50 py-20 px-6">
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Join Our Team</h2>
-      <p class="text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">We are a passionate team dedicated to advancing solar and battery storage solutions. Join us in shaping a sustainable future.</p>
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Join our passionate team to shape the future of renewable energy and microgrid solutions.</p>
       <a href="/careers" class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200" data-aos="fade-up" data-aos-delay="400">View Open Positions</a>
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="container mx-auto py-20 px-6">
     <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Connect with Us</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div class="bg-white shadow-xl rounded-lg p-8" data-aos="fade-right">
+      <div class="card" data-aos="fade-right">
         <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
         <div class="space-y-6">
           <div>
@@ -576,11 +426,10 @@
       </div>
       <div data-aos="fade-left">
         <h3 class="text-2xl font-semibold mb-6">Get in Touch</h3>
-        <p class="text-gray-600 mb-4">We’re here to answer your questions and explore how Solvaris can contribute to your energy goals.</p>
+        <p class="text-gray-600 mb-4">We’re here to collaborate on building a sustainable energy future.</p>
         <div class="space-y-4">
-          <p><strong>Email:</strong> <a href="mailto:info@solvaris.com" class="text-green-600 hover:underline">info@solvaris.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+31201234567" class="text-green-600 hover:underline">+31 (0)20 123 4567</a></p>
-          <p><strong>Address:</strong> Keizersgracht 123, 1015 CJ Amsterdam, Netherlands</p>
+          <p><strong>Email:</strong> <a href="mailto: mauritsengelsman@gmail.com" class="text-green-600 hover:underline">mauritsengelsman@gmail.com</a></p>
+          <p><strong>Address:</strong> Sumatrakade, 1019 RH Amsterdam, Netherlands</p>
         </div>
         <div class="mt-8">
           <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
@@ -588,27 +437,29 @@
             <a href="https://linkedin.com/company/solvaris" target="_blank" class="text-gray-600 hover:text-green-600">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
             </a>
+            <a href="https://twitter.com/solvaris" target="_blank" class="text-gray-600 hover:text-green-600">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.1H5.756a2 2 0 0 0-2 2v13.8a2 2 0 0 0 2 2h12.488a2 2 0 0 0 2-2V4.1a2 2 0 0 0-2-2zm-6.99 14.894c-2.318 0-4.705-1.103-7.024-3.422-.318-.318-.497-.744-.497-1.199V4.1c0-.456.179-.882.497-1.2 2.319-2.319 4.706-3.422 7.024-3.422h6.488c2.319 0 4.706 1.103 7.024 3.422.318.318.497.744.497 1.2v9.8c0 .456-.179.882-.497 1.2-2.319 2.319-4.706 3.422-7.024 3.422zm-1.344-2.644c-1.352 0-2.746-.648-3.898-1.8-.318-.318-.497-.744-.497-1.2v-5.2c0-.456.179-.882.497-1.2 1.152-1.152 2.546-1.8 3.898-1.8h3.488c1.352 0 2.746.648 3.898 1.8.318.318.497.744.497 1.2v5.2c0 .456-.179.882-.497 1.2-1.152 1.152-2.546 1.8-3.898 1.8z"></path></svg>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="bg-gray-900 text-white py-12 px-6">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
       <div>
         <h3 class="text-xl font-bold mb-4">Solvaris</h3>
-        <p class="text-gray-400">Pioneering the solar energy revolution with innovative solar and battery storage solutions.</p>
+        <p class="text-gray-400">Pioneering renewable energy and microgrid solutions for a sustainable tomorrow.</p>
       </div>
       <div>
         <h3 class="text-xl font-bold mb-4">Quick Links</h3>
         <ul class="space-y-2">
           <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-200">Home</a></li>
           <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-200">About</a></li>
-          <li><a href="#investments" class="text-gray-400 hover:text-white transition-colors duration-200">Investments</a></li>
-          <li><a href="#impact" class="text-gray-400 hover:text-white transition-colors duration-200">Impact</a></li>
-          <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors duration-200">Projects</a></li>
+          <li><a href="#vision" class="text-gray-400 hover:text-white transition-colors duration-200">Our Vision</a></li>
+          <li><a href="#commitment" class="text-gray-400 hover:text-white transition-colors duration-200">Commitment</a></li>
+          <li><a href="#news" class="text-gray-400 hover:text-white transition-colors duration-200">News</a></li>
           <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-200">Contact</a></li>
         </ul>
       </div>
@@ -622,9 +473,8 @@
       <div>
         <h3 class="text-xl font-bold mb-4">Contact Info</h3>
         <ul class="space-y-2">
-          <li><a href="mailto:info@solvaris.com" class="text-gray-400 hover:text-white transition-colors duration-200">info@solvaris.com</a></li>
-          <li><a href="tel:+31201234567" class="text-gray-400 hover:text-white transition-colors duration-200">+31 (0)20 123 4567</a></li>
-          <li class="text-gray-400">Keizersgracht 123, 1015 CJ Amsterdam, Netherlands</li>
+          <li><a href="mailto:mauritsenelsman@gmail.com" class="text-gray-400 hover:text-white transition-colors duration-200">info@solvaris.com</a></li>
+          <li class="text-gray-400">Sumatrakade, 1019 RH Amsterdam, Netherlands</li>
         </ul>
       </div>
     </div>
@@ -633,10 +483,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lax.js@2.0.0/index.min.js"></script>
   <script src="/js/main.js" defer></script>
 </body>
 </html>
