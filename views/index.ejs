@@ -242,6 +242,61 @@
         padding: 0.75rem 1rem;
       }
     }
+
+    /* Logo section styles */
+    .logo-carousel {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .logo-carousel::before,
+    .logo-carousel::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+    }
+    .logo-carousel::before {
+      left: 0;
+      background: linear-gradient(to right, white, transparent);
+    }
+    .logo-carousel::after {
+      right: 0;
+      background: linear-gradient(to left, white, transparent);
+    }
+    .logos {
+      display: flex;
+      animation: scroll-left 30s linear infinite;
+    }
+    .logo-item {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f3f4f6;
+      margin: 0 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    @media (max-width: 768px) {
+      .logo-item {
+        width: 150px;
+        height: 80px;
+        margin: 0 10px;
+      }
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -321,6 +376,31 @@
     </div>
   </section>
 
+  <section class="bg-white py-12 px-6">
+    <div class="container mx-auto">
+      <div class="logo-carousel">
+        <div class="logos flex" style="width: 200%;">
+          <div class="logo-item"><img src="images/logo1.png" alt="Logo 1" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo2.png" alt="Logo 2" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo3.png" alt="Logo 3" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo4.png" alt="Logo 4" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo5.png" alt="Logo 5" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo6.png" alt="Logo 6" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo7.png" alt="Logo 7" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo8.png" alt="Logo 8" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo1.png" alt="Logo 1" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo2.png" alt="Logo 2" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo3.png" alt="Logo 3" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo4.png" alt="Logo 4" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo5.png" alt="Logo 5" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo6.png" alt="Logo 6" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo7.png" alt="Logo 7" class="max-h-full max-w-full"></div>
+          <div class="logo-item"><img src="images/logo8.png" alt="Logo 8" class="max-h-full max-w-full"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="vision" class="bg-white py-20 px-6">
     <div class="container mx-auto">
       <h2 class="text-4xl font-bold text-center mb-6" data-aos="fade-up">Our Vision</h2>
@@ -338,6 +418,11 @@
           <h3 class="text-2xl font-semibold mb-3">Microgrids</h3>
           <p class="text-gray-600 mb-4">Designing decentralized microgrid solutions to deliver resilient and sustainable power to underserved regions.</p>
         </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <img src="images/pic1.png" alt="Solar Energy" class="w-full h-48 object-cover rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+        <img src="images/pic2.png" alt="Battery Storage" class="w-full h-48 object-cover rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="400">
+        <img src="images/pic3.png" alt="Microgrids" class="w-full h-48 object-cover rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="500">
       </div>
     </div>
   </section>
@@ -382,17 +467,17 @@
         <p class="text-gray-600 mb-4">Solvaris begins forming alliances with global technology providers to support our upcoming renewable energy projects.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <p class="text-green-600 font-semibold text-sm mb-2">April 2025</p>
+        <p class="text-green-600 font-semibold text-sm mb-2">December 2024</p>
         <h3 class="text-xl font-semibold mb-3">Industry Engagement</h3>
         <p class="text-gray-600 mb-4">Solvaris joins renewable energy associations to stay at the forefront of industry innovation and collaboration.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="400">
-        <p class="text-green-600 font-semibold text-sm mb-2">March 2025</p>
+        <p class="text-green-600 font-semibold text-sm mb-2">July 2024</p>
         <h3 class="text-xl font-semibold mb-3">Market Analysis Completed</h3>
         <p class="text-gray-600 mb-4">Solvaris completes comprehensive market studies to identify key opportunities for renewable energy development.</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="500">
-        <p class="text-green-600 font-semibold text-sm mb-2">January 2025</p>
+        <p class="text-green-600 font-semibold text-sm mb-2">January 2024</p>
         <h3 class="text-xl font-semibold mb-3">Solvaris Founded</h3>
         <p class="text-gray-600 mb-4">Solvaris is established in Amsterdam with a mission to lead the renewable energy revolution.</p>
       </div>
@@ -438,7 +523,7 @@
         <div class="mt-8">
           <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
           <div class="flex space-x-4">
-            <a href="https://linkedin.com/company/solvaris" target="_blank" class="text-gray-600 hover:text-green-600">
+            <a href="https://www.linkedin.com/company/solvaris-energy-impact/" target="_blank" class="text-gray-600 hover:text-green-600">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
             </a>
             <a href="https://twitter.com/solvaris" target="_blank" class="text-gray-600 hover:text-green-600">
